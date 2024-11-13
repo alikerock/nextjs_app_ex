@@ -1,5 +1,8 @@
 "use client";
+import { useRouter } from 'next/navigation'
+
 export default function Create() {
+  const router = useRouter();
   const onSubmit = (e)=>{
     e.preventDefault();
     const title = e.target.title.value;
@@ -15,6 +18,8 @@ export default function Create() {
       .then(res=>res.json()) //결과를 객체로 변환
       .then(result=>{
         console.log(result);
+        router.push(`/read/${result.id}`);
+        router.refresh();
       })
   }
   return (
