@@ -11,7 +11,7 @@ export default function Update(props) {
   const [body, setBody] = useState([]);
 
   useEffect(()=>{
-    fetch('http://localhost:9999/topics/'+id)
+    fetch(process.env.NEXT_PUBLIC_API_URL+'topics/'+id)
     .then(res=>{
        return res.json();//json->object
     })
@@ -23,7 +23,7 @@ export default function Update(props) {
 
   /*
   //서버형 컴포넌트, 데이터 조회
-  const response = await fetch(`http://localhost:9999/topics/${props.params.id}`);
+  const response = await fetch(`process.env.NEXT_PUBLIC_API_URL+'topics/${props.params.id}`);
   const topic = await response.json(); //json->object
   */
 
@@ -37,7 +37,7 @@ export default function Update(props) {
       },
       body:JSON.stringify({title, body}) //object->json
     }
-    fetch('http://localhost:9999/topics/'+id, options)
+    fetch(process.env.NEXT_PUBLIC_API_URL+'topics/'+id, options)
       .then(res=>res.json()) //결과를 객체로 변환
       .then(result=>{
         console.log(result);

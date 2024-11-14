@@ -1,18 +1,22 @@
 "use client";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 const Control = ()=>{
   const params = useParams();
   const id = params.id;
+  const router = useRouter();
+  console.log(id);
 
   const deleteTopic  = ()=>{
     const option = {method:'DELETE'};
-    fetch('http://localhost:9999/topics'+id,option)
+    fetch(process.env.NEXT_PUBLIC_API_URL+'topics/'+id,option)
     .then(res=>{
        return res.json();//json->object
     })
     .then(result=>{     
+      router.push('/');
+      router.refresh();
     });
   }
 
@@ -21,7 +25,7 @@ const Control = ()=>{
       <li><Link href="/create">Create</Link></li>
       {id && <>
         <li><Link href={`/update/${id}`}>Update</Link></li>
-        <li><button onClick={deleteTopic}>delete</button></li>
+        <li><button onClick={deleteTopic} >delete</button></li>
       </>}     
     </ul> 
   )

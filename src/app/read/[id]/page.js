@@ -1,5 +1,5 @@
 export default async function Read(props) {
-  const response = await fetch(`http://localhost:9999/topics/${props.params.id}`);
+  const response = await fetch(process.env.NEXT_PUBLIC_API_URL+`topics/${props.params.id}`);
   const topic = await response.json(); //json->object
 
   return (
