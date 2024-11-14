@@ -1,1 +1,1 @@
-NEXT_PUBLIC_API_URL=http://localhost:9999/
+NEXT_PUBLIC_API_URL=https://varying-doralin-ezweb-0b04d821.koyeb.app/
