@@ -11,7 +11,7 @@ export default function Create() {
       method:'POST',
       headers:{
         'Content-Type':'application/json',
-         'Cache-Control': 'no-cache'
+        'Cache-Control': 'no-cache'
       },
       body:JSON.stringify({title, body}) //object->json
     }
