@@ -28,6 +28,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   /*
+  client 컴포넌트에서 데이터 조회
   const [topics, setTopics] = useState([]);
   useEffect(()=>{
     fetch('http://localhost:9999/topics')
@@ -39,6 +40,8 @@ export default async function RootLayout({ children }) {
     });
   },[])
   */
+ 
+ //서버형 컴포넌트에서 데이터 조회
   const response = await fetch('http://localhost:9999/topics');
   const topics = await response.json(); //json->object
 
