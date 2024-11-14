@@ -9,7 +9,7 @@ const Control = ()=>{
     <ul>
       <li><Link href="/create">Create</Link></li>
       {id && <>
-        <li><Link href="/update/1">Update</Link></li>
+        <li><Link href={`/update/${id}`}>Update</Link></li>
         <li><button>delete</button></li>
       </>}     
     </ul> 
