@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server": "npx json-server@0.17.4 --watch db.json --port 9999"
+    "server": "npx json-server@0.17.4 --watch db.json --port 9999",
+    "vercel-deploy": "next build"
+
   },
   "dependencies": {
     "react": "19.0.0-rc-66855b96-20241106",
