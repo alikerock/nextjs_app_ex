@@ -42,7 +42,10 @@ export default async function RootLayout({ children }) {
   */
  
  //서버형 컴포넌트에서 데이터 조회
-  const response = await fetch(process.env.NEXT_PUBLIC_API_URL+'topics');
+  // 서버형 컴포넌트에서 데이터 조회 (캐시 비활성화)
+  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "topics", {
+    cache: "no-store", // 매번 새로 데이터를 가져옴
+  });
   const topics = await response.json(); //json->object
 
   return (
