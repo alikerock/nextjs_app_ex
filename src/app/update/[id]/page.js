@@ -1,3 +1,5 @@
+"use client";
+
 export async function generateStaticParams() {
   const resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}topics`);
   const topics = await resp.json();
@@ -7,7 +9,7 @@ export async function generateStaticParams() {
   }));
 }
 
-"use client";
+
 import { useRouter,useParams } from 'next/navigation'
 import { useEffect, useState } from 'react';
 
