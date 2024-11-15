@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import Image from "next/image";
 import Control from "./read/[id]/Control";
+import Nav from "./Nav";
 //import { useEffect,useState } from "react";
 
 /*
@@ -59,16 +60,7 @@ export default async function RootLayout({ children }) {
           <Image src="/home_google_icon.png" alt="home icon" width={48} height={48}></Image>
           <Link href="/">WEB</Link>
         </h1>
-        <nav>
-          <ol>
-            {
-              topics.map(topic=> <li key={topic.id}><Link href={`/read/${topic.id}`}>{topic.title}</Link></li> )
-            }
-            {/* <li><Link href="/read/1">html</Link></li>
-            <li><Link href="/read/2">css</Link></li>
-            <li><Link href="/read/3">javascript</Link></li> */}
-          </ol>
-        </nav>
+        <Nav />
         {children}
         <Control/>       
       </body>
