@@ -9,6 +9,8 @@ export default function Update(props) {
   //client 컴포넌트에서 데이터 조회
 
   // 모든 가능한 id 값을 반환하는 generateStaticParams 함수
+  const [topic, setTopic] = useState(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function fetchTopic() {
       try {
