@@ -2,6 +2,16 @@
 import { useRouter,useParams } from 'next/navigation'
 import { useEffect, useState } from 'react';
 
+// 모든 가능한 id 값을 반환하는 generateStaticParams 함수
+export async function generateStaticParams() {
+  const resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}topics`);
+  const topics = await resp.json();
+ 
+  return topics.map((topic) => ({
+    id: topic.id.toString(),
+  }));
+}
+
 export default function Update(props) {
   const params = useParams();
   const id = params.id;
