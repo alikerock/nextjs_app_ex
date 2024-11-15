@@ -7,7 +7,9 @@ export default function Nav() {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_API_URL + "topics")
+    fetch(process.env.NEXT_PUBLIC_API_URL + "topics", {
+      cache: "no-store", // 캐시 비활성화
+    })
       .then((res) => res.json())
       .then((data) => setTopics(data));
   }, []);
