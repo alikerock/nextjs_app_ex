@@ -2,20 +2,28 @@
 import { useRouter,useParams } from 'next/navigation'
 import { useEffect, useState } from 'react';
 
-// 모든 가능한 id 값을 반환하는 generateStaticParams 함수
-export async function generateStaticParams() {
-  const resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}topics`);
-  const topics = await resp.json();
- 
-  return topics.map((topic) => ({
-    id: topic.id.toString(),
-  }));
-}
 
 export default function Update(props) {
   const params = useParams();
   const id = params.id;
   //client 컴포넌트에서 데이터 조회
+
+  // 모든 가능한 id 값을 반환하는 generateStaticParams 함수
+  useEffect(() => {
+    async function fetchTopic() {
+      try {
+        const resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}topics/${id}`);
+        const data = await resp.json();
+        setTopic(data);
+      } catch (error) {
+        console.error("Failed to fetch topic:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchTopic();
+  }, [id]);
 
   const [title, setTitle] = useState([]);
   const [body, setBody] = useState([]);
