@@ -30,7 +30,7 @@ export default function Update({ id }) {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}topics/${id}`, options)
       .then((res) => res.json())
       .then((result) => {
-        router.push('/');
+        router.push('/'); //수정완료후 홈으로 이동
         router.refresh();
       });
   };
